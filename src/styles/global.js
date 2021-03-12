@@ -21,7 +21,7 @@ export default createGlobalStyle`
   body {
     overflow: auto;
     -webkit-font-smoothing: antialiased;
-    background-color: '#FFFFFF';
+    background: #E8E8E8;
   }
   a {
     text-decoration: none;
