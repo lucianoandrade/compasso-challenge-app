@@ -1,32 +1,34 @@
 import React, { useState, useEffect } from "react";
 import ListNews from "../../services/constants";
 import NewsImage from "../../assets/images/newsImage.png";
+import Modal from "../Modal";
 import {
   Container,
   GridUI,
   CardUI,
   CardActionAreaUI,
   CardMediaUI,
-  CardActionsUI,
   CardContentUI,
-  ButtonUI,
-  TypographyTitleUI,
-  TypographyUI
+  TypographyTitleUI
 } from "./styles";
 
 function CardNews() {
   const [news, setNews] = useState([]);
+  const [newsSummary, setNewsSummary] = useState([]);
+  const [open, setOpen] = useState(false);
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
   useEffect(() => {
     ListNews.get().then((response) => setNews(response.data.results));
   }, []);
-
   return (
     <Container>
       <GridUI container spacing={1}>
         <GridUI container item xs={15} spacing={3}>
           {news.map((e) => (
             <>
-              <CardUI>
+              <CardUI onClick={() => { setNewsSummary(e); handleOpen(); }}>
                 <CardActionAreaUI>
                   <CardMediaUI
                     image={
@@ -42,26 +44,12 @@ function CardNews() {
                     <TypographyTitleUI gutterBottom variant="h5" component="h2">
                       {e.title}
                     </TypographyTitleUI>
-                    <TypographyUI
-                      variant="body2"
-                      color="textSecondary"
-                      component="p"
-                    >
-                      {e.abstract}
-                    </TypographyUI>
                   </CardContentUI>
                 </CardActionAreaUI>
-                <CardActionsUI>
-                  <ButtonUI size="small" color="primary">
-                    Summary
-                  </ButtonUI>
-                  <ButtonUI size="small" color="primary">
-                    Read on NYT
-                  </ButtonUI>
-                </CardActionsUI>
               </CardUI>
             </>
           ))}
+          <Modal open={open} news={newsSummary} handleClose={handleClose} />
         </GridUI>
       </GridUI>
     </Container>
