@@ -1,29 +1,71 @@
 import React, { useState, useEffect } from "react";
-import { Paper, Grid } from "@material-ui/core";
 import ListNews from "../../services/constants";
-import { Container, useStyles } from "./styles";
+import NewsImage from "../../assets/images/newsImage.png";
+import {
+  Container,
+  GridUI,
+  CardUI,
+  CardActionAreaUI,
+  CardMediaUI,
+  CardActionsUI,
+  CardContentUI,
+  ButtonUI,
+  TypographyTitleUI,
+  TypographyUI
+} from "./styles";
 
-function Home() {
+function CardNews() {
   const [news, setNews] = useState([]);
-  const classes = useStyles();
-
   useEffect(() => {
     ListNews.get().then((response) => setNews(response.data.results));
   }, []);
 
   return (
     <Container>
-      <Grid container spacing={1}>
-        <Grid container item xs={15} spacing={3}>
-          { news.map((e) => (
-            <Grid item xs={4}>
-              <Paper className={classes.paper}>{e.title}</Paper>
-            </Grid>
+      <GridUI container spacing={1}>
+        <GridUI container item xs={15} spacing={3}>
+          {news.map((e) => (
+            <>
+              <CardUI>
+                <CardActionAreaUI>
+                  <CardMediaUI
+                    image={
+                      e.multimedia[0].url ? e.multimedia[0].url : NewsImage
+                    }
+                    title={
+                      e.multimedia[0].caption
+                        ? e.multimedia[0].caption
+                        : "News image"
+                    }
+                  />
+                  <CardContentUI>
+                    <TypographyTitleUI gutterBottom variant="h5" component="h2">
+                      {e.title}
+                    </TypographyTitleUI>
+                    <TypographyUI
+                      variant="body2"
+                      color="textSecondary"
+                      component="p"
+                    >
+                      {e.abstract}
+                    </TypographyUI>
+                  </CardContentUI>
+                </CardActionAreaUI>
+                <CardActionsUI>
+                  <ButtonUI size="small" color="primary">
+                    Summary
+                  </ButtonUI>
+                  <ButtonUI size="small" color="primary">
+                    Read on NYT
+                  </ButtonUI>
+                </CardActionsUI>
+              </CardUI>
+            </>
           ))}
-        </Grid>
-      </Grid>
+        </GridUI>
+      </GridUI>
     </Container>
   );
 }
 
-export default Home;
+export default CardNews;
