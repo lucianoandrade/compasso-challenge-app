@@ -1,26 +1,30 @@
 <p align="center">
-  <img src="https://github.com/lucianoandrade/compasso-challenge-app/blob/master/src/assets/images/logo.png" alt="Logo created for the Compasso UOL challenge" />
+  <img src="https://github.com/lucianoandrade/compasso-challenge-app/blob/master/src/assets/images/logo.png" style="height: 195px" alt="Logo created for the Compasso UOL challenge" />
 </p>
 
 <h3 align="center">
   ...
 </h3>
 
-<br>
-
 ## Sobre o Desafio :green_book:
 
 Este projeto é fruto de um processo de seleção para a Compasso UOL.
 
 ## Tecnologias
+
 - O projeto foi desenvolvido em React.
 - Foi utilizado o Eslint para o style-guide.
-- Utilizei componentes do material UI.
-- Estilização com styled-components.
+- Utilizei componentes do material UI para ganhar mais agilidade na estilização.
+- Escolhi o styled-components para criação de estilos, pois é mais simples passar       propriedades para os estilos.
 - Axios para conectar a API.
 - React Hooks.
+- Surge serverir o projeto numa URL
 
-## Como rodar o projeto ?
+## Você pode conferir o projeto aqui:
+- nyt-compasso.surge.sh
+
+## ou se preferir rodar o projeto:
+
 Para funcionamento da aplicação é necessário clonar o projeto e em seguida instalar todas as dependências.
 
 - Se estiver utilizando Yarn
