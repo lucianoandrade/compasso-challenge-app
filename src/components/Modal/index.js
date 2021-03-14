@@ -1,6 +1,13 @@
 import React from "react";
 import { Backdrop } from "@material-ui/core";
-import { ModalUI, FadeUI } from "./styles";
+import {
+  ModalUI,
+  FadeUI,
+  Container,
+  Title,
+  LinkNews,
+  Abstract
+} from "./styles";
 
 function NewsModal({ open, handleClose, news }) {
   return (
@@ -16,12 +23,13 @@ function NewsModal({ open, handleClose, news }) {
       }}
     >
       <FadeUI in={open}>
-        <div>
-          {/* <img src={NewsImage} alt="news" /> */}
-          <h2 id="spring-modal-title">{news.title}</h2>
-          <a href={news.short_url}>{news.short_url}</a>
-          <p id="spring-modal-description">{news.abstract}</p>
-        </div>
+        <Container>
+          <Title id="spring-modal-title">{news.title}</Title>
+          <Abstract id="spring-modal-description">{news.abstract}</Abstract>
+          <LinkNews href={news.short_url}>
+            Read the full story at The New York times here
+          </LinkNews>
+        </Container>
       </FadeUI>
     </ModalUI>
   );

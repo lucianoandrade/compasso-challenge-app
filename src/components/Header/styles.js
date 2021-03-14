@@ -8,7 +8,7 @@ export const Container = styled.header`
 
 export const Logo = styled.img.attrs(() => ({
   src: LogoNews,
-  alt: "Logotipo criado para o desafio Compasso UOL"
+  alt: "Logo created for the Compasso UOL challenge"
 }))`
   max-width: 75px;
   width: 100%;
