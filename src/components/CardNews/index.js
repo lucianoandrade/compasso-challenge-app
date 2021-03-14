@@ -12,7 +12,8 @@ import {
   TypographyTitleUI
 } from "./styles";
 
-function CardNews() {
+function CardNews({ newsSession }) {
+  const [loading, setLoading] = useState(true);
   const [news, setNews] = useState([]);
   const [newsSummary, setNewsSummary] = useState([]);
   const [open, setOpen] = useState(false);
@@ -20,14 +21,16 @@ function CardNews() {
   const handleClose = () => setOpen(false);
 
   useEffect(() => {
-    ListNews.get().then((response) => setNews(response.data.results));
-  }, []);
+    ListNews.get(newsSession).then((response) => setNews(response.data.results));
+    setLoading(false);
+  }, [newsSession]);
+
   return (
     <Container>
       <GridUI container spacing={1}>
         <GridUI container item xs={15} spacing={3}>
-          {news.map((e) => (
-            <>
+          {loading ? <h2>loading</h2>
+            : news.map((e) => (
               <CardUI onClick={() => { setNewsSummary(e); handleOpen(); }}>
                 <CardActionAreaUI>
                   <CardMediaUI
@@ -47,8 +50,7 @@ function CardNews() {
                   </CardContentUI>
                 </CardActionAreaUI>
               </CardUI>
-            </>
-          ))}
+            ))}
           <Modal open={open} news={newsSummary} handleClose={handleClose} />
         </GridUI>
       </GridUI>

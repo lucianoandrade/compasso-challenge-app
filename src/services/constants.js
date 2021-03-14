@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export default axios.create({
-  baseURL:
-    "https://api.nytimes.com/svc/topstories/v2/technology.json?api-key=IbpAOVOu6DmcVMGLrCm24LrACGkcbRfr"
+  baseURL: "https://api.nytimes.com/svc/topstories/v2",
+  params: {
+    "api-key": "IbpAOVOu6DmcVMGLrCm24LrACGkcbRfr"
+  }
 });

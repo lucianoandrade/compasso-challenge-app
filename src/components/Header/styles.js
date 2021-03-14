@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { AppBar, Toolbar } from "@material-ui/core";
 import LogoNews from "../../assets/images/logo.png";
 
 export const Container = styled.header`
@@ -22,4 +23,9 @@ export const ContainerTitle = styled.div`
 
 export const Title = styled.h1`
   margin: auto 0 auto 20px;
+`;
+
+export const AppBarUI = styled(AppBar)`
+`;
+export const ToolbarUI = styled(Toolbar)`
 `;

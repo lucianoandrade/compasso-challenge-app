@@ -10,7 +10,6 @@ import {
 
 export const Container = styled.div`
   width: 100%;
-  margin-top: 5%;
 `;
 export const GridUI = styled(Grid)`
   justify-content: center;

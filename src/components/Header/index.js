@@ -1,7 +1,8 @@
 import React from "react";
-import { AppBar, Toolbar } from "@material-ui/core";
 import {
   Container,
+  AppBarUI,
+  ToolbarUI,
   Logo,
   ContainerTitle,
   Title
@@ -10,14 +11,14 @@ import {
 function Header() {
   return (
     <Container>
-      <AppBar position="static" color="inherit">
-        <Toolbar>
+      <AppBarUI position="static" color="inherit">
+        <ToolbarUI>
           <ContainerTitle>
             <Logo />
             <Title>Technology and Science</Title>
           </ContainerTitle>
-        </Toolbar>
-      </AppBar>
+        </ToolbarUI>
+      </AppBarUI>
     </Container>
   );
 }
