@@ -42,6 +42,8 @@ function CardNews({ newsSession }) {
             >
               <CardActionAreaUI>
                 <CardMediaUI
+                  component="img"
+                  loading="lazy"
                   image={
                       e.multimedia[0].url ? e.multimedia[0].url : NewsImage
                     }
