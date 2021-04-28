@@ -32,35 +32,44 @@ function CardNews({ newsSession }) {
   return (
     <Container>
       <GridUI container spacing={1}>
-        <GridUI container item xs={15} spacing={3}>
-          {news.map((e) => (
-            <CardUI
-              onClick={() => {
-                setNewsSummary(e);
-                handleOpen();
-              }}
-            >
-              <CardActionAreaUI>
-                <CardMediaUI
-                  component="img"
-                  loading="lazy"
-                  image={
-                      e.multimedia[0].url ? e.multimedia[0].url : NewsImage
+        <GridUI container item xs={12} spacing={3}>
+          {news.length === 0
+            ? "Carregando..."
+            : news.map((e) => (
+              <CardUI
+                key={e.short_url}
+                onClick={() => {
+                  setNewsSummary(e);
+                  handleOpen();
+                }}
+              >
+                <CardActionAreaUI>
+                  <CardMediaUI
+                    component="img"
+                    loading="lazy"
+                    image={
+                      e.multimedia && e.multimedia[0].url
+                        ? e.multimedia[0].url
+                        : NewsImage
                     }
-                  title={
-                      e.multimedia[0].caption
+                    title={
+                      e.multimedia && e.multimedia[0].caption
                         ? e.multimedia[0].caption
                         : "News image"
                     }
-                />
-                <CardContentUI>
-                  <TypographyTitleUI gutterBottom variant="h5" component="h2">
-                    {e.title}
-                  </TypographyTitleUI>
-                </CardContentUI>
-              </CardActionAreaUI>
-            </CardUI>
-          ))}
+                  />
+                  <CardContentUI>
+                    <TypographyTitleUI
+                      gutterBottom
+                      variant="h5"
+                      component="h2"
+                    >
+                      {e.title}
+                    </TypographyTitleUI>
+                  </CardContentUI>
+                </CardActionAreaUI>
+              </CardUI>
+            ))}
           <Modal open={open} news={newsSummary} handleClose={handleClose} />
         </GridUI>
       </GridUI>

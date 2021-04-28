@@ -12,7 +12,7 @@ function SelectSession({ setNewsSession }) {
   const [selectScience, setSelectScience] = useState(false);
   return (
     <Container>
-      <ButtonGroupUI variant="text" color="inhert">
+      <ButtonGroupUI variant="text" color="inherit">
         <ButtonUI
           onClick={() => {
             setNewsSession("technology.json");
